@@ -69,7 +69,7 @@ From the terminal:
 	$ docker pull mysql:latest
 	$ docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 mysql:latest
 	$ docker cp ~/webCnpm/database/datav4.sql mysql-container:/tmp/
-	$ docker exec -i mysql-container mysql -uroot -ppassword < /tmp/datav4.sql
+	$ docker exec -i mysql-container mysql -u root -p password < /tmp/datav4.sql
 
 
 2. backend (api)
