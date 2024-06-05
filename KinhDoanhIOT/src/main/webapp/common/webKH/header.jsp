@@ -79,7 +79,7 @@
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<div class="breadcrumb__text">
-							<h2>SHOP IOT</h2>
+							<h2>SHOP KINH DOANH IOT</h2>
 
 						</div>
 
