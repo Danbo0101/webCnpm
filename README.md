@@ -27,7 +27,9 @@ Shop Headless commerce consists of the following components:
 
 - Spring boot Java / Spring boot backend
 
-See the demo: http://031001.xyz/dichvu/khachhanghome.htm
+See the demo: 
+User : http://031001.xyz/dichvu/khachhanghome.htm
+Admin : http://031001.xyz/dichvu
 -------------------
 
 1.  Run from Docker images:
