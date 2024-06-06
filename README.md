@@ -63,9 +63,6 @@ for each of the the projects above
 To build the application:
 -------------------
 
-In local
--------------------
-
 1. Sql(Mysql 8.4.0)
 
 
@@ -97,15 +94,61 @@ From the terminal:
 	$ docker run --network=host --name web KinhDoanhIOTImage
 
 
- In SSH
+Deloy project using ssh:
 -------------------
+
+1. IP_VPS
+   - First, we need a VPS to have a static IP. In the project I rented an Ubuntu VPS from Vultr.
+   - We can buy an additional domain name pointing to the VPS IP I just bought for convenient access later: in the project I bought from Vultr. NameCheap .
+   - After that from the terminal we access via ssh with the command :
+     
+	$ ssh root@<IP_VPS> (Enter the ssh password provided by Vultr (service provider).
+ 
+   - In the client, we generate the ssh key pair with the command :
+     
+	$ ssh-keygen
+
+   - Copy the content of the public key (in the .pub file) into the file in the /root/.ssh/authentication_key directory, so we don't need to enter a password when ssh into the VPS as long as we keep the pirivate_key file.
+
+2. Set up mySql
 
 From the terminal:
 
-	$ ssh root@031001.xyz 
- 
+	$ apt update && apt upgrade
+ 	$ apt install mysql
+	$ mysql -u root
+	$ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+ 	$ exit
+	$ curl -LO https://raw.githubusercontent.com/thuanntd2001/webCnpm/main/database/datav4.sql
+	$ mysql -u root -p (Enter password is password)
+	$ create schema kinhdoanh;
+	$ source datav4.sql
+	$ exit
+
+3. Set up Nginx
+
+From the terminal:
+
+	$ apt install nginx
+	$ cd /etc/nginx/site-available 
+	$ rm default
+ 	$ touch shop (Copy the content of the config-nginx file into the shop file)
+	$ cd /etc/nginx/site-enable
+	$ ln -s /etc/nginx/site-available/shop
+	$ systemctl restart nginx
 
 
+ 4. Set up Docker
+
+From the terminal:
+
+	$ ufw allow 80
+	$ apt install docker
+	$ docker pull thuanntd2001/api
+ 	$ docker pull thuanntd2001/web
+	$ docker run -d --network=host --name api thuanntd2001/api
+	$ docker run -d --network=host --name web thuanntd2001/web
+      
 
 ### Access the application:
 -------------------
