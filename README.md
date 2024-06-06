@@ -97,6 +97,16 @@ From the terminal:
 	$ docker run --network=host --name web KinhDoanhIOTImage
 
 
+ In SSH
+-------------------
+
+From the terminal:
+
+	$ ssh root@031001.xyz 
+ 
+
+
+
 ### Access the application:
 -------------------
 
