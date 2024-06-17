@@ -74,24 +74,29 @@ From the terminal:
 	$ docker exec -i mysql-container mysql -u root -p password < /tmp/datav4.sql
 
 
-2. backend (api)
+2. backend (api/openjdk11)
 
 
-From the terminal:
+From the eclipse:
 
-	$ cd api
-	$ mvn clean install
-	$ cd target 
-	$ java -jar API-1.0.jar
+	$ import maven project api
+	$ update maven project
+	$ run configurations
+ 	- DB_PASSWORD : 123456
+  	- DB_SERVER : localhost
+   	- DB_USERNAME : root
+	$ run java application
 
-3. Shop sample site
+3. Shop sample site (tomcat v8.5)
 
 
-From the terminal:
+From the eclipse:
 
-	$ cd KinhDoanhIOT
-	$ docker build -t KinhDoanhIOTImage:latest
-	$ docker run --network=host --name web KinhDoanhIOTImage
+	$ import maven project dich vu
+	$ update maven project
+	$ run configurations
+ 	- API-SERVER: localhost
+	$ run on server
 
 
 Deloy project using ssh:
